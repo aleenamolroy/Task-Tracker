@@ -1,3 +1,4 @@
+import Taskcard from "@/components/TaskCard";
 import Image from "next/image";
 import { title } from "process";
 export const metadata={
@@ -17,7 +18,7 @@ export default async function Home(){
       <ul className="space-y-2 ">
         {tasks.length === 0 && <p className="mt-10">No tasks found.</p>}
         {tasks.map((task:any)=>(
-          <li key={task.id} className="p-3 bg-gray-100 rounded">{task.title} - {task.completed ? "completed":"Not completed"}</li>
+          <Taskcard key={task._id} task={task}/>
         ))}
       </ul>
     </div>

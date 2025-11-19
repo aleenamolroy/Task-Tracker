@@ -1,18 +1,20 @@
-import { title } from "process"
+import { connectDB } from "@/lib/mongodb"
+import task from "@/models/task"
 import { Task } from "@/Type/tasks"
 import { NextResponse } from "next/server"
-let tasks:Task[]=[]
+import { describe } from "node:test"
+// export let tasks:Task[]=[]
 
 export async function GET(){
+    await connectDB()
+    const tasks=await task.find()
     return NextResponse.json(tasks)
 }
 export async function POST(req:Request) {
-    const body=await req.json()
-    const newTask={
-        id:String(Date.now()),
-        title:body.title,
+    const data=await req.json()
+    const newTask=await task.create({
+        title: data.title,
         completed:false
-    }
-    tasks.push(newTask);
+    })
     return NextResponse.json(newTask,{status:200})
 }

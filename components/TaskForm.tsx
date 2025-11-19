@@ -16,9 +16,9 @@ export default function TaskForm() {
         router.refresh()
     }
   return (
-    <form className="p-4 space-y-3">
+    <form onSubmit={handlesubmit} className="p-4 space-y-3">
         <input type="text" value={title} onChange={(e)=>settitle(e.target.value)} placeholder='Enter Task' className='border p-2 w-full'/>
-        <button onClick={handlesubmit} className="bg-blue-600 text-white px-4 py-2 rounded">Add Task</button>
+        <button type='submit' className="bg-blue-600 text-white px-4 py-2 rounded">Add Task</button>
     </form>
   )
 }
