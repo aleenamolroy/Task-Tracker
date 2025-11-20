@@ -13,12 +13,31 @@ export default function TaskForm() {
             body:JSON.stringify({title})
         })
         settitle("")
-        router.refresh()
+        router.push('/')
     }
   return (
-    <form onSubmit={handlesubmit} className="p-4 space-y-3">
-        <input type="text" value={title} onChange={(e)=>settitle(e.target.value)} placeholder='Enter Task' className='border p-2 w-full'/>
-        <button type='submit' className="bg-blue-600 text-white px-4 py-2 rounded">Add Task</button>
-    </form>
+    <form
+  onSubmit={handlesubmit}
+  className="p-20 bg-gray-500 shadow-md rounded-xl space-y-4 border border-gray-100 max-w-3xl mx-auto mt-6"
+>
+
+  <div className="flex items-center gap-3">
+    <input
+      type="text"
+      value={title}
+      onChange={(e) => settitle(e.target.value)}
+      placeholder="Enter your task..."
+      className="flex-1 border border-gray-300 rounded-lg p-3 text-gray-700 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+    />
+
+    <button
+      type="submit"
+      className="bg-purple-400 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-500 transition"
+    >
+      Add
+    </button>
+  </div>
+</form>
+
   )
 }
