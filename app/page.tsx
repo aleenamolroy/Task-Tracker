@@ -6,7 +6,8 @@ export const metadata={
   description:"View and manage tasks"
 }
 async function getTask() {
-    const res=await fetch('http://localhost:3000/api/tasks',{cache:'no-store'})
+    const baseurl=process.env.BASE_URL ||"http://localhost:3000"
+    const res=await fetch(`${baseurl}/api/tasks`,{cache:'no-store'})
     return res.json()
   }
 

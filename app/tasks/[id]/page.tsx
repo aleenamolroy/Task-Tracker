@@ -1,9 +1,10 @@
 import { Task } from "@/Type/tasks";
 
 export default async function TaskDetail({ params }: { params: { id: string } }) {
+  const baseurl=process.env.BASE_URL||"http://localhost:3000"
   const {id} = await params;
-console.log("ID from URL:", id);
-  const res = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+  console.log("ID from URL:", id);
+  const res = await fetch(`${baseurl}/api/tasks/${id}`, {
     method:"GET",
     cache: "no-store",
   });
